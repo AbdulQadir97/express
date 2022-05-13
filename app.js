@@ -1,8 +1,9 @@
 const express = require('express')
 const app = express()
 const port = '3001'
-const formRoutes = require('./routes/form')
+const productsRoutes = require('./routes/products')
 const bodyParser = require('body-parser')
+const {connectedDB} = require('./dbConnection')
 
 // const globleMiddleware = ((req, res, next)=>{
 //     console.log("Global Middleware");
@@ -11,11 +12,14 @@ const bodyParser = require('body-parser')
 
 // app.use(globleMiddleware)
 
+// run().catch(console.dir)
+
 app.use(bodyParser.urlencoded({extended:false}))
+app.set('view engine', 'ejs')
+app.set ('views', 'views')
+app.use('/products', productsRoutes)
 
-app.use('/form', formRoutes)
-
-app.use('/', (req, res, next)=>{
+app.use('/', (req, res)=>{
     res.send("HOME")
 
 })

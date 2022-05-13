@@ -1,0 +1,9 @@
+M = Model (Data Store, Retrieve, Update)
+V = Views (Display )
+C = Controller (From Model to View Handler)
+
+
+for db connection
+1- require mongoose
+2- mongoose.connect ('mongodb://localhost:27017/crud');
+3- export mongoose
